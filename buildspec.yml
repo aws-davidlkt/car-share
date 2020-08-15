@@ -1,0 +1,20 @@
+version: 0.2
+env:
+  variables:
+    ECR_REPO: "657245661846.dkr.ecr.us-west-2.amazonaws.com/awsomebuilder-carshare"
+    REGISTRY_NAME: "awsomebuilder-carshare"
+    REGISTRY_ZONE: "us-west-2"
+    TAG: "latest"
+
+phases:
+  build:
+    commands:
+      - "docker build -t $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION ."
+  post_build:
+    commands:
+      # push image
+      - "$(aws ecr get-login --region $REGISTRY_ZONE --no-include-email)"
+      - "docker tag $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION $ECR_REPO:$TAG"
+      - "docker push $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - "aws ecr batch-delete-image --repository-name $REGISTRY_NAME --image-ids imageTag=$TAG --region $REGISTRY_ZONE"
+      - "docker push $ECR_REPO:$TAG"
