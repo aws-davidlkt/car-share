@@ -10,8 +10,13 @@ phases:
   post_build:
     commands:
       # push image
+      # - "$(aws ecr get-login --region $REGISTRY_ZONE --no-include-email)"
+      # - "docker tag $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION $ECR_REPO:$TAG"
+      # - "docker push $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      # - "aws ecr batch-delete-image --repository-name $REGISTRY_NAME --image-ids imageTag=$TAG --region $REGISTRY_ZONE"
+      # - "docker push $ECR_REPO:$TAG"
       - "$(aws ecr get-login --region us-west-2 --no-include-email)"
-      - "docker tag $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION $ECR_REPO:$TAG"
+      - "docker tag $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION $ECR_REPO:latest"
       - "docker push $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION"
-      - "aws ecr batch-delete-image --repository-name $REGISTRY_NAME --image-ids imageTag=$TAG --region $REGISTRY_ZONE"
-      - "docker push $ECR_REPO:$TAG"
+      - "aws ecr batch-delete-image --repository-name awsomebuilder-carshare --image-ids imageTag=latest --region us-west-2"
+      - "docker push $ECR_REPO:latest"
