@@ -10,7 +10,7 @@ phases:
   post_build:
     commands:
       # push image
-      - "$(aws ecr get-login --region $REGISTRY_ZONE --no-include-email)"
+      - "$(aws ecr get-login --region us-west-2 --no-include-email)"
       - "docker tag $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION $ECR_REPO:$TAG"
       - "docker push $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION"
       - "aws ecr batch-delete-image --repository-name $REGISTRY_NAME --image-ids imageTag=$TAG --region $REGISTRY_ZONE"
