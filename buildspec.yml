@@ -20,3 +20,4 @@ phases:
       - "docker push $ECR_REPO:$CODEBUILD_RESOLVED_SOURCE_VERSION"
       - "aws ecr batch-delete-image --repository-name awsomebuilder-carshare --image-ids imageTag=latest --region us-west-2"
       - "docker push $ECR_REPO:latest"
+      - "AWS_DEFAULT_REGION=us-west-2 aws ecs update-service --cluster CarShare  --service infrastructure-carShareService6D113673-19WFHB70KG2VZ --force-new-deployment"
