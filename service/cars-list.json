@@ -1,0 +1,26 @@
+{
+    "cars": [
+      {
+        "carId": "4e53920c-505a-4a90-a694-b9300791f0ae",
+        "carPlate": "FMP315",
+        "model": "Renault Megane Scenic2",
+        "driver": "David Carbone",
+        "distanceKms": 0.7
+        },
+       {
+        "carId": "2b473002-36f8-4b87-954e-9a377e0ccbec",
+        "carPlate": "ASK435",
+        "model": "Honda Civic",
+        "driver": "Lucia Carbone",
+        "distanceKms": 3
+        },
+       {
+        "carId": "0e37d916-f960-4772-a25a-01b762b5c1bd",
+        "carPlate": "RUT766",
+        "model": "Toyota Corolla",
+        "driver": "Santiago Carbone",
+        "distanceKms": 5
+        }
+    ]
+  }
+  

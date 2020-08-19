@@ -1,6 +1,5 @@
 FROM python:3.8-slim
+COPY ./service /carshare
 WORKDIR /carshare
-ADD . /carshare
 RUN pip install -r requirements.txt
-EXPOSE 5000
-CMD ["python","app.py"]
+CMD ["python","carshare.py"]
