@@ -16,7 +16,7 @@ def getAllCars():
     carsList = defaultdict(list)
     for item in response['Items']:
         car = {}
-        car['id'] = item['id']['S']
+        car['Id'] = item['Id']['S']
         car['Model'] = item['Model']['S']
         car['Plate'] = item['Plate']['S']
         car['Driver'] = item['Driver']['S']
