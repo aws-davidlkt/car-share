@@ -18,9 +18,14 @@ def getAllCars():
         car = {}
         car['id'] = item['id']['S']
         car['Model'] = item['Model']['S']
-        car['carPlate'] = item['carPlate']['S']
-        car['driver'] = item['driver']['S']
-        car['distanceKms'] = item['distanceKms']['N']
+        car['Plate'] = item['Plate']['S']
+        car['Driver'] = item['Driver']['S']
+        car['Distance'] = item['Distance']['N'],
+        car['Reserved'] = item['Reserved']['BOOL'],
+        car['Size'] = item['Size']['S'],
+        car['Likes'] = item['Likes']['N'],
+        car['Image'] = item['Image']['S'],
+        car['DetailsImage'] = item['DetailsImage']['S']
         carsList['cars'].append(car)
 
     return json.dumps(carsList)
