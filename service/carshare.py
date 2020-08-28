@@ -37,15 +37,34 @@ def getCars():
     return flaskResponse
 
 #Retrieve a specific car by providing path parameter ID
-@app.route("/cars/<id>", methods=['GET'])
-def getcar(id):
-    serviceResponse = carShareTableClient.getCar(id)
+@app.route("/cars/<Id>", methods=['GET'])
+def getcar(Id):
+    serviceResponse = carShareTableClient.getCar(Id)
 
     flaskResponse = Response(serviceResponse)
     flaskResponse.headers["Content-Type"] = "application/json"
 
     return flaskResponse
 
+# increment the number of likes for the provided car.
+@app.route("/cars/<Id>/like", methods=['POST'])
+def likeCar(Id):
+    serviceResponse = carShareTableClient.likeCar(Id)
+
+    flaskResponse = Response(serviceResponse)
+    flaskResponse.headers["Content-Type"] = "application/json"
+
+    return flaskResponse
+
+# indicate that the provided car should be marked as reserved.
+@app.route("/cars/<Id>/reserve", methods=['POST'])
+def reserveCar(Id):
+    serviceResponse = carShareTableClient.reserveCar(Id)
+
+    flaskResponse = Response(serviceResponse)
+    flaskResponse.headers["Content-Type"] = "application/json"
+
+    return flaskResponse
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
