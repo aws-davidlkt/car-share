@@ -7,7 +7,7 @@ CORS(app)
 
 @app.route('/')
 def healthCheckResponse():
-    return jsonify({"message" : "u reached it OK!. Try /cars instead."})
+    return jsonify({"message" : "We made it just fine!. Try /cars instead."})
     
 
 # @app.route('/get-cars')
